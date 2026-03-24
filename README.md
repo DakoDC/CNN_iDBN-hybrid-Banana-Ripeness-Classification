@@ -1,2 +1,15 @@
 # CNN_iDBN-hybrid-Banana-Ripeness-Classification
-The project compares a compact CNN and a hybrid CNN–iDBN architecture, analyzing learned representations through linear readouts, clustering, receptive fields, and max-activating inputs. Model behavior is further evaluated using confusion matrices, psychometric curves, and adversarial robustness tests.
+
+## Introduction
+This project investigates image classification using a [Banana ripeness classification dataset](https://www.kaggle.com/datasets/shahriar26s/banana-ripeness-classification-dataset) from kaggle, composed of images about bananas in different stages of ripeness (unripe, ripe, overripe, rotten).  
+The main goal is to evaluate how different representation-learning strategies perform on this task. In particular, the project focuses on convolutional neural networks (CNNs) and a hybrid architecture that combines a CNN with an iterative Deep Belief Network (iDBN). Another important objective is to explore computationally efficient approaches while still maintaining strong classification performance.
+
+A compact CNN is first used as a baseline model. The architecture relies on hierarchical convolutional features and adaptive pooling, allowing it to process images with varying spatial resolutions. In addition to performing end-to-end classification, the internal representations learned by the CNN are analyzed using linear readouts and clustering methods to help provide insight into how information related to banana ripeness is organized within the model’s feature space. Hyperparameters are selected using a dedicated validation set to ensure a fair comparison between models and to reduce the risk of overfitting.
+
+To investigate alternative representation-learning strategies, the CNN is then combined with an iDBN trained on fixed CNN embeddings. In this hybrid setup, the CNN acts as a frozen feature extractor, while the iDBN learns higher-level dependencies in the embedding space through unsupervised, layer-wise training. The resulting representations are again evaluated using linear classifiers, clustering techniques and an overview of the max activating inputs for the hidden layers, allowing a direct comparison with the standalone CNN in terms of structure and generalization. 
+
+Model performance is evaluated using standard classification metrics and confusion matrices, which help highlight class-specific strengths as well as common error patterns, while psychometric curves are also used to study how sensitive the models are to gradual changes in visual ripeness cues, providing a more detailed view of their decision behavior beyond simple accuracy scores. Robustness is further assessed through adversarial perturbations, testing how stable each model’s predictions remain when the input images are intentionally modified to cause misclassification.
+
+Finally, a concluding evaluation is performed on a dedicated test set.
+
+This experimental setup ensures that the reported results reflect genuine generalization performance and enables a systematic comparison between the CNN baseline, the hybrid CNN–iDBN model, and their corresponding linear readouts. Overall, these analyses provide a comprehensive evaluation of representation quality, classification performance, and robustness in the task of estimating banana ripeness from images.
